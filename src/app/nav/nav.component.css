@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    background: rgb(176, 176, 255);
+    height: 4em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 2rem;
+    padding: 1rem;
+}
+
