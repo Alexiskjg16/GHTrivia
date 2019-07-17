@@ -12,7 +12,7 @@ export class AppComponent {
   triviaquestion={}
 
   public getQuestion(){
-    this.http.get("https://opentdb.com/api.php?amount=5&amp;category=11&amp;difficulty=medium&amp;type=multiple")
+    this.http.get("http://opentdb.com/api.php?amount=5&amp;category=11&amp;difficulty=medium&amp;type=multiple")
     .subscribe(function(triviaquestion){this.triviaquestion=triviaquestion}.bind(this))
   }
 }

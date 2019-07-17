@@ -8,15 +8,18 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent implements OnInit {
 
+  results : Object;
+
   constructor(private data: DataService) { }
 
-  h1Style : boolean = false;
 
   ngOnInit() {
+    this.data.getTrivia().subscribe(data => {
+      this.results = data
+      console.log(this.results)
+    })
   }
 
-  firstClick() {
-    this.data.secondClick();
-  }
+ 
 
 }

@@ -1,60 +1,24 @@
-<h1 [class.blue]="h1Style"> Let's play! </h1>
+<h1> Let's play! </h1>
 
-<button (click)="getQuestion()">Click Me To Begin</button>
 
-<section>
-<h2> {{ triviaquestion.question }}</h2>
+<ul *ngIf="results">
+    <li *ngFor="let result of results.results">
+        <h2> {{result.question}}</h2>
+        <p class="questions"> {{ result.correct_answer }}</p>
+        <p class="questions">{{ result.incorrect_answers }}</p>
+    </li>
+</ul>
+
+<!-- <section>
+
 <h3>Q placeholder!</h3>
 <ul>
-    <li class="questions">{{ triviaquestion.correct_answer }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
+    <li class="questions">{{ result.correct_answer }}</li>
+    <li class="questions">{{ result.incorrect_answers }}</li>
+    <li class="questions">{{ result.incorrect_answers }}</li>
+    <li class="questions">{{ result.incorrect_answers }}</li>
 </ul>
 </section>
 
-<section>
-<h2> {{ triviaquestion.question }}</h2>
-<h3>Q placeholder!</h3>
-<ul>
-    <li class="questions">{{ triviaquestion.correct_answer }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-</ul>
-</section>
 
-<section>
-<h2> {{ triviaquestion.question }}</h2>
-<h3>Q placeholder!</h3>
-<ul>
-    <li class="questions">{{ triviaquestion.correct_answer }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-</ul>
-</section>
-
-<section>
-<h2> {{ triviaquestion.question }}</h2>
-<h3>Q placeholder!</h3>
-<ul>
-    <li class="questions">{{ triviaquestion.correct_answer }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-</ul>
-</section>
-
-<section>
-<h2> {{ triviaquestion.question }}</h2>
-<h3>Q placeholder!</h3>
-<ul>
-    <li class="questions">{{ triviaquestion.correct_answer }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-    <li class="questions">{{ triviaquestion.incorrect_answers }}</li>
-</ul>
-</section>
-
-<h2> You Got <span class="result">THIS MANY</span> Wrong!</h2>
+<h2> You Got <span class="result">THIS MANY</span> Wrong!</h2> -->
