@@ -9,7 +9,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   secondClick() {
-    return this.http.get('https://regresin/api/users')
+    return this.http.get('https://opentdb.com/api.php?amount=5&amp;category=11&amp;difficulty=medium&amp;type=multiple')
 
 }
 }
