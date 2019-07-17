@@ -2,7 +2,7 @@
 
 
 <ul *ngIf="results">
-    <li *ngFor="let result of results.results" class="questions">
+    <li *ngFor="let result of results" class="questions">
         <h2> {{result.question}}</h2>
         <input type="radio"/><p> {{ result.correct_answer }}</p>
         <p class="answerList">{{ result.incorrect_answers }}</p>
