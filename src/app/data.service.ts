@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
 
   constructor(private http: HttpClient) { }
-    url = 'https://opentdb.com/api.php?amount=5&amp;category=11&amp;difficulty=medium&amp;type=multiple'
   
     getTrivia() {
       return this.http.get('https://opentdb.com/api.php?amount=5&amp;category=11&amp;difficulty=medium&amp;type=multiples')

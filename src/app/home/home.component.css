@@ -16,3 +16,9 @@ ul {
     display: none;
     font-size: 26px;
 }
+
+.answerList {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}

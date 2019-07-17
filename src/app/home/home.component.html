@@ -2,23 +2,13 @@
 
 
 <ul *ngIf="results">
-    <li *ngFor="let result of results.results">
+    <li *ngFor="let result of results.results" class="questions">
         <h2> {{result.question}}</h2>
-        <p class="questions"> {{ result.correct_answer }}</p>
-        <p class="questions">{{ result.incorrect_answers }}</p>
+        <p> {{ result.correct_answer }}</p>
+        <p class="answerList" (onLoad)="someMethod()">{{ result.incorrect_answers }}</p>
     </li>
 </ul>
 
-<!-- <section>
+<button> Show my results!</button>
 
-<h3>Q placeholder!</h3>
-<ul>
-    <li class="questions">{{ result.correct_answer }}</li>
-    <li class="questions">{{ result.incorrect_answers }}</li>
-    <li class="questions">{{ result.incorrect_answers }}</li>
-    <li class="questions">{{ result.incorrect_answers }}</li>
-</ul>
-</section>
-
-
-<h2> You Got <span class="result">THIS MANY</span> Wrong!</h2> -->
+<h2> You Got <span class="result">THIS MANY</span> Wrong!</h2>
