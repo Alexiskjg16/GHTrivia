@@ -2,10 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
 interface ResultsObject {
-  catergory: string
+  category: string
   correct_answer: string
   difficulty: string
   incorrect_answers: Array<string>
+  question: string
+  type: string
+}
+interface QuestionObject {
+  category: string
+  correct_answer: string
+  difficulty: string
+  possible_answers: Array<string>
   question: string
   type: string
 }
@@ -17,21 +25,27 @@ styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
-results : Array<ResultsObject>;
+results : Array<QuestionObject>;
 
 constructor(private data: DataService) { }
 
 ngOnInit() {
-  this.data.getTrivia().subscribe((data: Array<ResultsObject>) => {
-    this.results = data
-    console.log(this.results)
+  this.data.getTrivia().subscribe((data: {response_code: number, results: Array<ResultsObject>}) => {
+    console.log(data)
+    this.results = this.parseResults(data.results)
   })
 }
-someMethod = () => {
-  this.results = this.results.map(results => {
-    let temp = results
-    temp.incorrect_answers.push(temp.correct_answer)
-    return temp
+
+parseResults(results: Array<ResultsObject>): Array<QuestionObject> {
+  return results.map(result => {
+    return {
+      category: result.category,
+      correct_answer: result.correct_answer,
+      difficulty: result.difficulty,
+      possible_answers: result.incorrect_answers.concat(result.correct_answer),
+      question: result.question,
+      type: result.type
+    }
   })
  }
 }
