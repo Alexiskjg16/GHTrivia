@@ -69,5 +69,14 @@ countAnswers() {
   return document.getElementById("finalResults").innerHTML = `You got ${correct.length} right!` ;
 }
 
+resetTrivia() {
+  this.data.getTrivia().subscribe((data: {response_code: number, results: Array<ResultsObject>}) => {
+
+    this.results = this.parseResults(data.results)
+    console.log(this.results)
+    document.getElementById("finalResults").innerHTML = '' ;
+    window.scrollTo(0, 0);
+ })
+}
 
 }
