@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
+//interfaces help define types (or else you'll get object error)
 interface ResultsObject {
-  catergory: string
+  category: string
   correct_answer: string
   difficulty: string
   incorrect_answers: Array<string>
+  question: string
+  type: string
+}
+interface QuestionObject {
+  category: string
+  correct_answer: string
+  difficulty: string
+  possible_answers: Array<string>
   question: string
   type: string
 }
@@ -17,21 +26,48 @@ styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
-results : Array<ResultsObject>;
+// results : Array<ResultsObject>;
+results : Array<QuestionObject>;
+count : string;
 
 constructor(private data: DataService) { }
 
 ngOnInit() {
-  this.data.getTrivia().subscribe((data: Array<ResultsObject>) => {
-    this.results = data
+  this.data.getTrivia().subscribe((data: {response_code: number, results: Array<ResultsObject>}) => {
+
+    this.results = this.parseResults(data.results)
     console.log(this.results)
+    
+    this.count = this.countAnswers()
+    console.log(this.count)
   })
 }
-someMethod = () => {
-  this.results = this.results.map(results => {
-    let temp = results
-    temp.incorrect_answers.push(temp.correct_answer)
-    return temp
+//this function adds the correct answer to incorrect and mixes them using splice and map, returing 'possible answers' (that we care about rn)
+parseResults(results: Array<ResultsObject>): Array<QuestionObject> {
+  return results.map(result => {
+    const possibleAnswers = [...result.incorrect_answers]
+    possibleAnswers.splice(this.generateRandomIndex(result.incorrect_answers.length - 1), 0, result.correct_answer)
+    return {
+      category: result.category,
+      correct_answer: result.correct_answer,
+      difficulty: result.difficulty,
+      possible_answers: possibleAnswers,
+      question: result.question,
+      type: result.type
+    }
   })
- }
+}
+//helper function for the splice
+generateRandomIndex = (max: number): number => {
+  return Math.floor(Math.random() * Math.floor(max))
+}
+
+
+countAnswers() {
+  var count = 0
+  var correct = document.querySelectorAll("input[correct]")
+     correct.forEach(count => {this.count})
+     return document.getElementById("finalResults").innerHTML = "You got {{ count }} right!" ;
+     console.log(count)
+}
 }

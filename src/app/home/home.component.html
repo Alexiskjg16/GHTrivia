@@ -1,14 +1,16 @@
-<h1> Let's play! </h1>
-
+<p id="instructions">Select one answer for each question, and when finished press results button below.</p>
 
 <ul *ngIf="results">
-    <li *ngFor="let result of results.results" class="questions">
-        <h2> {{result.question}}</h2>
-        <input type="radio"/><p> {{ result.correct_answer }}</p>
-        <p class="answerList">{{ result.incorrect_answers }}</p>
+            <li *ngFor="let result of results" class="questions">
+        <h3 [innerHTML]="result.question"></h3>
+
+        <section *ngFor="let answer of result.possible_answers" class="questionValues">
+                <input type="radio" [ngClass]="answer === result.correct_answer ? 'correct' : '' " class="specificRadio"/><p [innerHTML]="answer"></p>
+              </section>
     </li>
 </ul>
+<section class="answerSection">
+<button (onClick)="countAnswers()"> Show my results!</button>
 
-<button> Show my results!</button>
-
-<h2> You Got <span class="result">THIS MANY</span> Wrong!</h2>
+<h2 Id="finalResults"></h2> 
+</section>
