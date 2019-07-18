@@ -5,12 +5,13 @@
         <h3 [innerHTML]="result.question"></h3>
 
         <section *ngFor="let answer of result.possible_answers" class="questionValues">
-                <input type="radio" [ngClass]="answer === result.correct_answer ? 'correct' : '' " class="specificRadio"/><p [innerHTML]="answer"></p>
+                <input type="radio" [id]="answer" [name]="result.question" [value]="answer" [ngClass]="answer === result.correct_answer ? 'correct' : '' " class="specificRadio"/>
+                <label [for]="answer" [innerHTML]="answer"></label>
               </section>
     </li>
 </ul>
 <section class="answerSection">
-<button (onClick)="countAnswers()"> Show my results!</button>
+<button (click)="countAnswers()"> Show my results </button>
 
 <h2 Id="finalResults"></h2> 
 </section>

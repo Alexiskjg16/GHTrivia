@@ -38,8 +38,6 @@ ngOnInit() {
     this.results = this.parseResults(data.results)
     console.log(this.results)
     
-    this.count = this.countAnswers()
-    console.log(this.count)
   })
 }
 //this function adds the correct answer to incorrect and mixes them using splice and map, returing 'possible answers' (that we care about rn)
@@ -64,10 +62,12 @@ generateRandomIndex = (max: number): number => {
 
 
 countAnswers() {
-  var count = 0
-  var correct = document.querySelectorAll("input[correct]")
-     correct.forEach(count => {this.count})
-     return document.getElementById("finalResults").innerHTML = "You got {{ count }} right!" ;
-     console.log(count)
+  let checked = Array.from(document.querySelectorAll('[type=radio]')).filter(input => input['checked'] === true)
+  let correct = checked.filter(input => input.className.includes('correct'))
+  console.log('checked', checked)
+  console.log('number of correct', correct.length)
+  return document.getElementById("finalResults").innerHTML = `You got ${correct.length} right!` ;
 }
+
+
 }
