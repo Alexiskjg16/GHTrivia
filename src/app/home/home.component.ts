@@ -73,7 +73,6 @@ resetTrivia() {
   this.data.getTrivia().subscribe((data: {response_code: number, results: Array<ResultsObject>}) => {
 
     this.results = this.parseResults(data.results)
-    console.log(this.results)
     document.getElementById("finalResults").innerHTML = '' ;
     window.scrollTo(0, 0);
  })
