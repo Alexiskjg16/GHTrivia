@@ -36,7 +36,7 @@ ngOnInit() {
   this.data.getTrivia().subscribe((data: {response_code: number, results: Array<ResultsObject>}) => {
 
     this.results = this.parseResults(data.results)
-    console.log(this.results)
+   // console.log(this.results)
     
   })
 }
@@ -64,7 +64,7 @@ generateRandomIndex = (max: number): number => {
 countAnswers() {
   let checked = Array.from(document.querySelectorAll('[type=radio]')).filter(input => input['checked'] === true)
   let correct = checked.filter(input => input.className.includes('correct'))
-  console.log('checked', checked)
+  // console.log('checked', checked)
   console.log('number of correct', correct.length)
   return document.getElementById("finalResults").innerHTML = `You got ${correct.length} right!` ;
 }
