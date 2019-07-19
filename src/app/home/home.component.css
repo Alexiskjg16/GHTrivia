@@ -42,3 +42,7 @@ button {
 .playAgain {
    align-items: center;
 }
+
+#resetButton {
+    display: none;
+}
